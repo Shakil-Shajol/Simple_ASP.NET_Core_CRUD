@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h3>Students</h3>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-sm-12">
+            <div class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header text-white bg-primary">@item.StudentName</div>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Gender.Sex</h5>
+                    <p class="card-text">@item.DateOfBirth</p>
+                </div>
+                <div class="card-footer bg-transparent border-success">
+                    <a class="btn btn-info" asp-area="" asp-controller="Students" asp-action="Details" asp-route-id="@item.StudentId">Details</a>
+                    <a class="btn btn-success"  asp-area="" asp-controller="Students" asp-action="Edit" asp-route-id="@item.StudentId">Edit</a>
+                    <a class="btn btn-danger" onclick="return confirm('Are you sure about delete the record?')"  asp-area="" asp-controller="Students" asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
